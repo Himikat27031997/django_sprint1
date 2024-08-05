@@ -1,21 +1,21 @@
 {% extends "base.html" %}
-{% block title %}{{ post_dict.location }}. {{ post_dict.date }} {% endblock %}   
+{% block title %}{{ post.location }}. {{ post.date }} {% endblock %}   
 {% block content %}
     <div class="container py-5">
         <article>
           <ul>
             <li>
-              Место: {{ post_dict.location }}             
+              Место: {{ post.location }}             
             </li>
             <li>
-              Дата: {{ post_dict.date }}
+              Дата: {{ post.date }}
             </li>
             <li>
-              Категория: <a href="{{post_dict.category}}">{{ post_dict.category }}</a>
+              Категория: <a href="{{ post_category.category }}">{{ post.category }}</a>
             </li>
           </ul>         
           <p>
-            {{ post_dict.text}}
+            {{ post.text}}
           </p>          
         </article>                
       </div>

@@ -4,10 +4,8 @@
   <div class="container py-5">
     <h1>Лента записей</h1>                        
     <!-- Перебираем в цикле все посты -->
-    {% for story in post_category %}
-      {% if not forlooplast %}
-        <hr>
-      {% endif %}
+    {% for story in post_list reversed %}
+      <hr>
       <article>
         <ul>
           <li>
@@ -17,14 +15,14 @@
             Дата: {{ story.date }}
           </li>
           <li>
-            Категория: <a href="{{ story.category }}">{{ story.category }}</a>
+            Категория: <a href="{% url 'blog:category_posts' story.category %}">{{ story.category }}</a>
           </li>
         </ul>          
         <!-- Первые 10 слов -->
         <p>
           {{ story.text|truncatewords:10 }} ...
         </p>
-        <a href="{% url 'pages:detail' story.id %}">Читать полный текст</a>
+        <a href="{% url 'blog:post_detail' story.id %}">Читать полный текст</a>
       </article>
     </div>
     {% endfor %}
