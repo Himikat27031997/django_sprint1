@@ -11,11 +11,11 @@
               Дата: {{ post.date }}
             </li>
             <li>
-              Категория: <a href="{{ post_category.category }}">{{ post.category }}</a>
+              Категория: <a href="{% url 'blog:category_posts' post.category %}">{{ post.category }}</a>
             </li>
           </ul>         
           <p>
-            {{ post.text}}
+            {{ post.text|linebreaks}}
           </p>          
         </article>                
       </div>
