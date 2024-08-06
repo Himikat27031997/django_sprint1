@@ -60,6 +60,12 @@ def post_detail(request, post_id):
         post = posts_dict[post_id]
     except KeyError:
         raise Http404(f'Страница post_id {post_id} не найдена')
+        # Я изменил в settings.py -> ALLOWED_HOSTS = ['*']
+        # Чтобы видеть страничку 404,
+        # но пишет просто Not found
+        # а мой текст не высвечивается
+        # лишка беру, или чето не учел?
+        # и нужно ли мне обратно менять на пустой список ALLOWED_HOSTS = ['*']?
     template = 'blog/detail.html'
     context = {'post': post}
     return render(request, template, context)
