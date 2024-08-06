@@ -1,3 +1,5 @@
+from django.http import Http404
+
 from django.shortcuts import render
 
 
@@ -44,6 +46,8 @@ posts = [
     },
 ]
 
+posts_dict = {dicto['id']: dicto for dicto in posts}
+
 
 def index(request):
     template = 'blog/index.html'
@@ -52,8 +56,12 @@ def index(request):
 
 
 def post_detail(request, post_id):
+    try:
+        post = posts_dict[post_id]
+    except KeyError:
+        raise Http404(f'Страница post_id {post_id} не найдена')
     template = 'blog/detail.html'
-    context = {'post': posts[post_id]}
+    context = {'post': post}
     return render(request, template, context)
 
 
